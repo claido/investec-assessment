@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Data
 @Builder
@@ -21,6 +22,7 @@ public class ClientDto {
     private String phoneNumber;
 
     @NotBlank(message = "ID number is mandatory")
+    @Pattern(regexp = "^[a-zA-Z0-9_-](?!.*::)[^%+\\\\\\\\/#'\\\"]+$", message = "ID number is invalid")
     private String idNumber;
 
     private String physicalAddress;
